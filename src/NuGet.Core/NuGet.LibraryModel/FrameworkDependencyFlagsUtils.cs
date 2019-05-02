@@ -23,7 +23,7 @@ namespace NuGet.LibraryModel
             {
                 foreach (var value in values)
                 {
-                    if (Enum.TryParse<FrameworkDependencyFlags>(value, ignoreCase: true, out var flag))
+                    if (Enum.TryParse<FrameworkDependencyFlags>(value, ignoreCase: true, result: out var flag))
                     {
                         result |= flag;
                     }
