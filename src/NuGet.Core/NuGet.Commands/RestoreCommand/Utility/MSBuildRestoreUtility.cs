@@ -696,7 +696,7 @@ namespace NuGet.Commands
                 .Contains(frameworkReference, ComparisonUtility.FrameworkReferenceNameComparer))
             {
                 var privateAssets = FrameworkDependencyFlagsUtils.GetFlags(MSBuildStringUtility.Split(privateAssetsValue));
-                frameworkInfo.FrameworkReferences.Add(new FrameworkDependency(name: frameworkReference, privateAssets: privateAssets));
+                frameworkInfo.FrameworkReferences.Add(new FrameworkDependency(frameworkReference, privateAssets));
                 return true;
             }
             return false;

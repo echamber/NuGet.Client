@@ -6,7 +6,7 @@ using NuGet.Common;
 
 namespace NuGet.LibraryModel
 {
-    public class FrameworkDependency : IEquatable<FrameworkDependency>, IComparable<FrameworkDependency>
+    public sealed class FrameworkDependency : IEquatable<FrameworkDependency>, IComparable<FrameworkDependency>
     {
         public string Name { get; }
 
@@ -14,12 +14,10 @@ namespace NuGet.LibraryModel
 
         public FrameworkDependency(
             string name,
-            FrameworkDependencyFlags privateAssets
-            )
+            FrameworkDependencyFlags privateAssets)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             PrivateAssets = privateAssets;
-
         }
 
         public int CompareTo(FrameworkDependency other)
@@ -28,7 +26,7 @@ namespace NuGet.LibraryModel
             {
                 return 1;
             }
-            
+
             var compare = ComparisonUtility.FrameworkReferenceNameComparer.Compare(Name, other.Name);
 
             if (compare == 0)

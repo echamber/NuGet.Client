@@ -19,6 +19,8 @@ namespace NuGet.LibraryModel.Tests
         public void FrameworkDependencyFlagsUtils_GetFlagsFromString_ReturnsExpectedFlags()
         {
             Assert.Equal(FrameworkDependencyFlags.All, FrameworkDependencyFlagsUtils.GetFlags("all"));
+            Assert.Equal(FrameworkDependencyFlags.All, FrameworkDependencyFlagsUtils.GetFlags("All"));
+            Assert.Equal(FrameworkDependencyFlags.None, FrameworkDependencyFlagsUtils.GetFlags("None"));
             Assert.Equal(FrameworkDependencyFlags.None, FrameworkDependencyFlagsUtils.GetFlags("none"));
             Assert.Equal(FrameworkDependencyFlags.None, FrameworkDependencyFlagsUtils.GetFlags((string)null));
             Assert.Equal(FrameworkDependencyFlags.All, FrameworkDependencyFlagsUtils.GetFlags("none,all")); // Stupid to write this, but pointless to enforce that people don't :)
@@ -33,6 +35,8 @@ namespace NuGet.LibraryModel.Tests
             Assert.Equal(FrameworkDependencyFlags.None, FrameworkDependencyFlagsUtils.GetFlags(new string[] { "none" }));
             Assert.Equal(FrameworkDependencyFlags.All, FrameworkDependencyFlagsUtils.GetFlags(new string[] { "all", "none" }));
             Assert.Equal(FrameworkDependencyFlags.All, FrameworkDependencyFlagsUtils.GetFlags(new string[] { "none", "all" }));
+            Assert.Equal(FrameworkDependencyFlags.All, FrameworkDependencyFlagsUtils.GetFlags(new string[] { "All", "None" }));
+
 
         }
     }

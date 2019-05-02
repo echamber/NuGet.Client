@@ -360,7 +360,7 @@ namespace NuGet.SolutionRestoreManager
 
         private static void PopulateFrameworkDependencies(TargetFrameworkInformation tfi, IVsTargetFrameworkInfo2 targetFrameworkInfo2)
         {
-            foreach ( var item in targetFrameworkInfo2.FrameworkReferences.Cast<IVsReferenceItem>())
+            foreach (var item in targetFrameworkInfo2.FrameworkReferences.Cast<IVsReferenceItem>())
             {
                 if (!tfi.FrameworkReferences.Any(e => ComparisonUtility.FrameworkReferenceNameComparer.Equals(e.Name, item.Name)))
                 {
@@ -412,9 +412,6 @@ namespace NuGet.SolutionRestoreManager
         /// <summary>
         /// Get the frameworkdependencyflag based on the name.
         /// </summary>
-        /// <param name="item"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
         private static FrameworkDependencyFlags GetFrameworkDependencyFlags(IVsReferenceItem item, string name)
         {
             var flags = GetPropertyValueOrNull(item, name);

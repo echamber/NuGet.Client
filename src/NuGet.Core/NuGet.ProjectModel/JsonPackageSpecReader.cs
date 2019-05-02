@@ -832,7 +832,7 @@ namespace NuGet.ProjectModel
                             privateAssets = FrameworkDependencyFlagsUtils.GetFlags(strings);
                         }
                     }
-                    frameworkReferences.Add(new FrameworkDependency(name: frameworkReference.Key, privateAssets: privateAssets));
+                    frameworkReferences.Add(new FrameworkDependency(name: frameworkReference.Key, privateAssets));
                 }
             }
         }

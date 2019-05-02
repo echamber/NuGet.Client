@@ -7,6 +7,6 @@ namespace NuGet.Common
 {
     public static class ComparisonUtility
     {
-        public static StringComparer FrameworkReferenceNameComparer = StringComparer.OrdinalIgnoreCase;
+        public static readonly StringComparer FrameworkReferenceNameComparer = StringComparer.OrdinalIgnoreCase;
     }
 }

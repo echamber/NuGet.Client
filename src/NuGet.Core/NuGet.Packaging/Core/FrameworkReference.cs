@@ -8,7 +8,7 @@ using static NuGet.Common.ComparisonUtility;
 
 namespace NuGet.Packaging
 {
-    public class FrameworkReference : IEquatable<FrameworkReference>, IComparer<FrameworkReference>, IComparable<FrameworkReference>
+    public sealed class FrameworkReference : IEquatable<FrameworkReference>, IComparer<FrameworkReference>, IComparable<FrameworkReference>
     {
         public string Name { get; }
 

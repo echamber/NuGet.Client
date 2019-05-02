@@ -197,9 +197,7 @@ namespace NuGet.Common
                 options: options);
         }
 
-#pragma warning disable IDE1006 // Naming Styles
         private static string _basePath;
-#pragma warning restore IDE1006 // Naming Styles
         private static string BasePath
         {
             get

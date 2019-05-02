@@ -356,9 +356,9 @@ namespace NuGet.Build.Tasks.Pack
                 var frameworkShortFolderName = framework.FrameworkName.GetShortFolderName();
                 foreach (var frameworkRef in framework.FrameworkReferences.Where(e => e.PrivateAssets != FrameworkDependencyFlags.All))
                 {
-                    if (tfmSpecificRefs.ContainsKey(frameworkShortFolderName))
+                    if (tfmSpecificRefs.TryGetValue(frameworkShortFolderName, out var frameworkRefNames))
                     {
-                        tfmSpecificRefs[frameworkShortFolderName].Add(frameworkRef.Name);
+                        frameworkRefNames.Add(frameworkRef.Name);
                     }
                     else
                     {

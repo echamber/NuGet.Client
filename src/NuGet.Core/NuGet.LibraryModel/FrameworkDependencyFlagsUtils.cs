@@ -9,27 +9,23 @@ namespace NuGet.LibraryModel
 {
     public class FrameworkDependencyFlagsUtils
     {
-        public static FrameworkDependencyFlags Default = FrameworkDependencyFlags.None;
+        public static readonly FrameworkDependencyFlags Default = FrameworkDependencyFlags.None;
 
         /// <summary>
         /// Convert set of flag strings into a FrameworkDependencyFlags.
         /// </summary>
-        public static FrameworkDependencyFlags GetFlags(IEnumerable<string> flags)
+        /// <param name="values">A list of values to generate the flags out of</param>
+        public static FrameworkDependencyFlags GetFlags(IEnumerable<string> values)
         {
             var result = FrameworkDependencyFlags.None;
 
-            if (flags != null)
+            if (values != null)
             {
-                foreach (var flag in flags)
+                foreach (var value in values)
                 {
-                    switch (flag.ToLowerInvariant())
+                    if (Enum.TryParse<FrameworkDependencyFlags>(value, ignoreCase: true, out var flag))
                     {
-                        case "all":
-                            result |= FrameworkDependencyFlags.All;
-                            break;
-                        default:
-                            break;
-                            // None is a noop here
+                        result |= flag;
                     }
                 }
             }
@@ -47,7 +43,6 @@ namespace NuGet.LibraryModel
                 case FrameworkDependencyFlags.All:
                     return "all";
                 case FrameworkDependencyFlags.None:
-                    return "none";
                 default:
                     return "none";
             }
